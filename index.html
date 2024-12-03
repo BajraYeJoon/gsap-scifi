@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A simple hello world page with GSAP animations"
+    />
+    <meta name="keywords" content="hello, gsap, animation" />
+    <meta name="author" content="Your Name" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Hello World with GSAP" />
+    <meta
+      property="og:description"
+      content="A simple hello world page with GSAP animations"
+    />
+    <meta
+      property="og:image"
+      content="https://yourdomain.com/preview-image.jpg"
+    />
+    <meta property="og:url" content="https://yourdomain.com" />
+    <title>Hello World with GSAP</title>
+    <link rel="canonical" href="https://yourdomain.com" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <audio id="doorSound" preload="auto">
+      <source src="./sound/door.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="door-container">
+      <div class="door door-left"></div>
+      <div class="door door-right"></div>
+    </div>
+    <main class="text-center">
+      <div class="border-b-2 border-black overflow-hidden mb-6">
+          <h1 class="hello-text text-6xl text-gray-800 font-bold">Hello World!</h1>
+      </div>
+      <button id="closeButton" class="close-button ">
+        Close
+      </button>
+    </main>
+
+    <!-- Start Button -->
+    <button id="startButton" class="start-button">
+      Enter
+    </button>
+
+    <!-- GSAP from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
