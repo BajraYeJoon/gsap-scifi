@@ -5,48 +5,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="A simple hello world page with GSAP animations"
+      content="Interactive Space Station Experience"
     />
-    <meta name="keywords" content="hello, gsap, animation" />
+    <meta name="keywords" content="space station, sci-fi, interactive, animation" />
     <meta name="author" content="Your Name" />
     <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="Hello World with GSAP" />
+    <meta property="og:title" content="Space Station Explorer" />
     <meta
       property="og:description"
-      content="A simple hello world page with GSAP animations"
+      content="Interactive Space Station Experience"
     />
     <meta
       property="og:image"
       content="https://yourdomain.com/preview-image.jpg"
     />
     <meta property="og:url" content="https://yourdomain.com" />
-    <title>Hello World with GSAP</title>
+    <title>Space Station Explorer</title>
     <link rel="canonical" href="https://yourdomain.com" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <body class="bg-black min-h-screen overflow-hidden">
     <audio id="doorSound" preload="auto">
       <source src="./sound/door.mp3" type="audio/mpeg">
     </audio>
+
+    <!-- Background Space Station -->
+    <div class="space-background"></div>
 
     <div class="door-container">
       <div class="door door-left"></div>
       <div class="door door-right"></div>
     </div>
-    <main class="text-center">
-      <div class="border-b-2 border-black overflow-hidden mb-6">
-          <h1 class="hello-text text-6xl text-gray-800 font-bold">Hello World!</h1>
+
+    <div class="station-container">
+      <!-- Main Corridor -->
+      <div class="room" id="main-corridor" data-depth="0.1">
+        <div class="corridor-lights"></div>
+        <div class="window-panel" data-depth="0.2">
+          <div class="space-window">
+            <div class="stars"></div>
+            <div class="earth"></div>
+          </div>
+        </div>
+        <div class="control-panel" data-depth="0.15">
+          <div class="panel-section">
+            <div class="panel-light"></div>
+            <div class="panel-light"></div>
+            <div class="panel-light"></div>
+          </div>
+          <div class="panel-screen">
+            <div class="screen-content">
+              <p class="status-text">STATUS: OPERATIONAL</p>
+              <p class="coordinates-text">COORDINATES: 51.5074° N, 0.1278° W</p>
+              <p class="altitude-text">ALTITUDE: 408 KM</p>
+            </div>
+          </div>
+        </div>
+        <div class="door-marker left" data-room="lab">Laboratory →</div>
+        <div class="door-marker right" data-room="command">← Command Center</div>
+        <div class="door-marker forward" data-room="observatory">Observatory ↑</div>
       </div>
-      <button id="closeButton" class="close-button ">
-        Close
-      </button>
-    </main>
+
+      <!-- Laboratory Room -->
+      <div class="room" id="lab" data-depth="0.1">
+        <div class="room-content" data-depth="0.2">
+          <h2 class="room-title">Research Laboratory</h2>
+          <div class="lab-equipment">
+            <div class="microscope" data-depth="0.3"></div>
+            <div class="test-tubes" data-depth="0.25"></div>
+            <div class="hologram-display" data-depth="0.15">
+              <div class="hologram-content"></div>
+            </div>
+          </div>
+          <div class="door-marker right" data-room="main-corridor">← Back to Corridor</div>
+          <div class="door-marker forward" data-room="biolab">Bio Lab ↑</div>
+        </div>
+      </div>
+
+      <!-- Command Center -->
+      <div class="room" id="command" data-depth="0.1">
+        <div class="room-content" data-depth="0.2">
+          <h2 class="room-title">Command Center</h2>
+          <div class="command-screens" data-depth="0.3">
+            <div class="main-screen">
+              <div class="screen-overlay"></div>
+              <div class="screen-content"></div>
+            </div>
+            <div class="sub-screens">
+              <div class="sub-screen" data-depth="0.25"></div>
+              <div class="sub-screen" data-depth="0.2"></div>
+              <div class="sub-screen" data-depth="0.15"></div>
+            </div>
+          </div>
+          <div class="door-marker left" data-room="main-corridor">Back to Corridor →</div>
+          <div class="door-marker forward" data-room="communications">Communications ↑</div>
+        </div>
+      </div>
+
+      <!-- Observatory -->
+      <div class="room" id="observatory" data-depth="0.1">
+        <div class="room-content" data-depth="0.2">
+          <h2 class="room-title">Observatory Deck</h2>
+          <div class="observatory-dome" data-depth="0.3">
+            <div class="space-view">
+              <div class="stars-deep"></div>
+              <div class="planets">
+                <div class="planet earth-view" data-depth="0.4"></div>
+                <div class="planet moon-view" data-depth="0.35"></div>
+              </div>
+            </div>
+            <div class="telescope" data-depth="0.25"></div>
+          </div>
+          <div class="door-marker back" data-room="main-corridor">↓ Back to Corridor</div>
+        </div>
+      </div>
+
+      <!-- Bio Lab -->
+      <div class="room" id="biolab" data-depth="0.1">
+        <div class="room-content" data-depth="0.2">
+          <h2 class="room-title">Biological Research Lab</h2>
+          <div class="bio-containers" data-depth="0.3">
+            <div class="specimen-tank" data-depth="0.35">
+              <div class="tank-content"></div>
+            </div>
+            <div class="plant-growth" data-depth="0.3">
+              <div class="plant"></div>
+            </div>
+          </div>
+          <div class="door-marker back" data-room="lab">↓ Back to Lab</div>
+        </div>
+      </div>
+
+      <!-- Communications -->
+      <div class="room" id="communications" data-depth="0.1">
+        <div class="room-content" data-depth="0.2">
+          <h2 class="room-title">Communications Hub</h2>
+          <div class="comm-equipment" data-depth="0.3">
+            <div class="satellite-dish" data-depth="0.35"></div>
+            <div class="signal-displays" data-depth="0.3">
+              <div class="signal-wave"></div>
+              <div class="signal-data"></div>
+            </div>
+          </div>
+          <div class="door-marker back" data-room="command">↓ Back to Command</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls Guide -->
+    <div class="controls-guide hidden">
+      <p>Use Arrow Keys to Navigate</p>
+      <p>Hold Shift + Arrows for Depth Movement</p>
+      <p>Press 'E' to Enter Rooms</p>
+      <p>Mouse Movement for View Control</p>
+    </div>
 
     <!-- Start Button -->
-    <button id="startButton" class="start-button">
-      Enter
-    </button>
+    <button id="startButton" class="start-button">Enter Station</button>
 
     <!-- GSAP from CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
